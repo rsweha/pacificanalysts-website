@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Pacific Analysts</title>
+<meta name="description" content="Pacific Analysts is an AI-native advisory practice built by operators who have shipped production AI systems tied to revenue — not slide-deck consultants.">
+<style>
+  :root{
+    --ink:#0f1b2d; --ink-soft:#33445c; --muted:#6b7a90; --line:#e2e8f0;
+    --bg:#ffffff; --bg-alt:#f5f8fa; --accent:#0d7d7d; --accent-deep:#0a5c5c; --sea:#0f3a52;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+       color:var(--ink);line-height:1.65;background:var(--bg);font-size:17px}
+  a{color:var(--accent-deep);text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+  header.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);
+       backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{font-weight:800;font-size:19px;letter-spacing:.3px;color:var(--sea)}
+  .logo span{color:var(--accent)}
+  nav.links a{margin-left:26px;color:var(--ink-soft);font-size:15px;font-weight:500}
+  nav.links a:hover,nav.links a.active{color:var(--accent-deep)}
+  nav.links a.cta{background:var(--accent-deep);color:#fff;padding:9px 18px;border-radius:8px}
+  nav.links a.cta:hover{background:var(--sea)}
+  .page-head{background:linear-gradient(160deg,#0f3a52,#0a2536);color:#eaf2f5;padding:72px 0 64px}
+  .page-head .eyebrow{color:#5ad1d1}
+  .page-head h1{font-size:42px;font-weight:800;letter-spacing:-.4px;max-width:780px}
+  .page-head p{margin-top:18px;font-size:19px;color:#b9cdd6;max-width:740px}
+  section{padding:74px 0}
+  .eyebrow{text-transform:uppercase;letter-spacing:2px;font-size:13px;font-weight:700;
+       color:var(--accent);margin-bottom:14px}
+  h2{font-size:31px;font-weight:800;letter-spacing:-.3px;color:var(--sea);max-width:760px}
+  .lead{font-size:19px;color:var(--ink-soft);max-width:780px;margin-top:16px}
+  p.body{font-size:17px;color:var(--ink-soft);max-width:780px;margin-top:18px}
+  .alt{background:var(--bg-alt)}
+  /* founder */
+  .founder{display:grid;grid-template-columns:230px 1fr;gap:40px;align-items:start;margin-top:10px}
+  .photo{width:230px;height:280px;border-radius:16px;background:linear-gradient(160deg,#0f3a52,#0a2536);
+       display:flex;align-items:center;justify-content:center;color:#5ad1d1;font-size:64px;font-weight:800;
+       border:1px solid var(--line)}
+  .founder h3{font-size:24px;color:var(--sea)}
+  .founder .role{color:var(--muted);font-size:15px;margin-bottom:12px}
+  /* values */
+  .vals{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px}
+  .val{background:#fff;border:1px solid var(--line);border-radius:14px;padding:28px 24px}
+  .val .num{font-size:14px;font-weight:800;color:var(--accent)}
+  .val h3{font-size:18px;color:var(--sea);margin:8px 0 8px}
+  .val p{font-size:15px;color:var(--ink-soft)}
+  /* track record */
+  .roles{margin-top:38px;border-left:2px solid var(--line);padding-left:0}
+  .role-item{position:relative;padding:0 0 28px 28px;border-left:2px solid var(--line);margin-left:6px}
+  .role-item::before{content:"";position:absolute;left:-7px;top:4px;width:12px;height:12px;
+       border-radius:50%;background:var(--accent)}
+  .role-item:last-child{border-left-color:transparent}
+  .role-item h4{color:var(--sea);font-size:18px}
+  .role-item .when{color:var(--muted);font-size:14px;margin:2px 0 8px}
+  .role-item p{color:var(--ink-soft);font-size:15.5px;max-width:760px}
+  .creds{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+  .cred{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 20px;font-size:15px;color:var(--sea)}
+  .cred b{color:var(--accent-deep)}
+  .band{background:var(--sea);color:#eaf2f5;border-radius:18px;padding:50px 46px;
+       display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap}
+  .band h2{color:#fff}.band p{color:#b9cdd6;margin-top:8px;max-width:540px}
+  .btn{display:inline-block;padding:14px 26px;border-radius:9px;font-weight:600;font-size:16px}
+  .btn.primary{background:#11b3b3;color:#06262a}.btn.primary:hover{background:#5ad1d1}
+  footer{background:#081a28;color:#8fa6b3;padding:46px 0;font-size:14.5px}
+  .foot-in{display:flex;justify-content:space-between;flex-wrap:wrap;gap:18px}
+  footer a{color:#bcd3dd}footer .logo{color:#fff;font-size:17px;margin-bottom:6px}
+  @media(max-width:820px){
+    .vals{grid-template-columns:1fr}.founder{grid-template-columns:1fr}
+    .photo{width:100%;height:220px}
+    .page-head h1{font-size:32px}h2{font-size:26px}
+    nav.links a:not(.cta){display:none}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav"><div class="wrap nav-in">
+  <div class="logo">Pacific<span>Analysts</span></div>
+  <nav class="links">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="about.html" class="active">About</a>
+    <a href="contact.html" class="cta">Get in touch</a>
+  </nav>
+</div></header>
+
+<section class="page-head"><div class="wrap">
+  <div class="eyebrow">About</div>
+  <h1>An advisory practice for businesses that want AI in production — not in pilot purgatory.</h1>
+  <p>Pacific Analysts exists because the market is crowded with strategy decks and prompt-engineering courses, and short on advisors who have actually shipped the systems. We close that gap.</p>
+</div></section>
+
+<section><div class="wrap">
+  <div class="eyebrow">Who we are</div>
+  <h2>Builder-led advisory, by design.</h2>
+  <p class="body">Pacific Analysts is a focused advisory practice that helps established businesses become AI-native — redesigning core workflows, data, and decision-making so AI is the default way work gets done. We lead with the data layer and the agentic architecture that make AI durable, and we measure success in revenue, cost, and cycle time rather than experiments run.</p>
+  <p class="body">The practice is run by senior operators who have personally built and shipped the production AI and data-platform systems most consultants only describe.</p>
+</div></section>
+
+<section class="alt"><div class="wrap">
+  <div class="eyebrow">Who's behind it</div>
+  <div class="founder">
+    <div class="photo">PA</div>
+    <div>
+      <h3>Builder-led, not slide-deck-led.</h3>
+      <div class="role">Senior operators · 12+ years shipping production AI &amp; data platforms</div>
+      <p class="body" style="margin-top:6px">Pacific Analysts is run by senior AI and product operators who have spent more than a decade building 0→1 and scaled data/AI products at companies like Amazon Ads, Comcast/FreeWheel, and leading insurance and data businesses. Doctoral-level computer-science depth means we work credibly at the engineering level while driving product strategy with executives — a combination that moves faster and builds more defensible products than a purely business-side advisor.</p>
+      <p class="body">The throughline: find the high-value AI opportunity, align the organization behind it, and stay hands-on enough to ship it to production.</p>
+    </div>
+  </div>
+  <div class="vals">
+    <div class="val"><div class="num">01</div><h3>Finds revenue at scale</h3><p>Spots underserved markets and emerging platform capabilities before they're obvious, then builds the products that turn them into measurable revenue.</p></div>
+    <div class="val"><div class="num">02</div><h3>Secures buy-in</h3><p>Earns trust by listening first and delivering reliably — aligning engineering, sales, legal, and the C-suite around a shared vision, then executing.</p></div>
+    <div class="val"><div class="num">03</div><h3>Strategic and in-the-trenches</h3><p>Sets multi-year roadmaps and presents to boards, while writing PRDs, unblocking engineers, and shipping iteratively.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="eyebrow">Track record</div>
+  <h2>Production AI and data platforms, tied to P&amp;L.</h2>
+  <div class="roles">
+    <div class="role-item">
+      <h4>Agentic AI &amp; MCP integration</h4>
+      <p>Built production agentic systems — analytics agents wired into live workflows and MCP endpoints for headless enterprise integration — moving organizations from "AI that answers" to "AI that does."</p>
+    </div>
+    <div class="role-item">
+      <h4>Amazon Ads</h4>
+      <p>Founding work on a DSP authorized-reseller program that became the fastest-growing revenue channel — a 12x expansion from $25M to $25M/month — plus a privacy-preserving API platform (patent-pending) now used by global agency holding companies.</p>
+    </div>
+    <div class="role-item">
+      <h4>Insurance — personalization &amp; segmentation</h4>
+      <p>$100M of added written premium in nine months through persona-based segmentation, an ML model suite, and a high-velocity experimentation program.</p>
+    </div>
+    <div class="role-item">
+      <h4>Comcast / FreeWheel — data science</h4>
+      <p>Founded a data-science function: a linear-TV optimizer driving a 4% lift on $1B of network inventory, an allocator that saved a major operator $50M/year, and an identity graph later spun off as an independent product.</p>
+    </div>
+  </div>
+  <div class="creds">
+    <div class="cred"><b>Ph.D.-level</b> computer science depth</div>
+    <div class="cred"><b>Patent-pending</b> privacy-preserving data technology</div>
+    <div class="cred"><b>Peer-reviewed</b> systems research (Best Paper)</div>
+    <div class="cred"><b>12+ years</b> shipping production data &amp; AI</div>
+  </div>
+</div></section>
+
+<section class="alt"><div class="wrap">
+  <div class="band">
+    <div>
+      <h2>Let's talk about your highest-value AI opportunity.</h2>
+      <p>Tell us where you are, and we'll point you to the right first step.</p>
+    </div>
+    <a href="contact.html" class="btn primary">Get in touch</a>
+  </div>
+</div></section>
+
+<footer><div class="wrap foot-in">
+  <div><div class="logo">Pacific Analysts</div><div>AI-native advisory for established businesses.</div></div>
+  <div>
+    <div><a href="index.html">Home</a> &nbsp;·&nbsp; <a href="services.html">Services</a> &nbsp;·&nbsp; <a href="contact.html">Contact</a></div>
+    <div style="margin-top:8px"><a href="mailto:partners@pacificanalysts.com">partners@pacificanalysts.com</a></div>
+  </div>
+</div></footer>
+
+</body>
+</html>
