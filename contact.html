@@ -55,6 +55,11 @@
        border-radius:9px;font-size:16px;font-weight:700;cursor:pointer}
   button:hover{background:var(--sea)}
   .note{font-size:13px;color:var(--muted);margin-top:12px;text-align:center}
+  .note.err{color:#b42318}
+  button[disabled]{opacity:.7;cursor:progress}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+  .sent{background:var(--bg-alt);border:1px solid var(--line);border-radius:16px;padding:32px}
+  [hidden]{display:none!important}
   footer{background:#081a28;color:#8fa6b3;padding:46px 0;font-size:14.5px}
   .foot-in{display:flex;justify-content:space-between;flex-wrap:wrap;gap:18px}
   footer a{color:#bcd3dd}footer .logo{color:#fff;font-size:17px;margin-bottom:6px}
@@ -102,7 +107,12 @@
       </div>
     </div>
 
-    <form action="mailto:partners@pacificanalysts.com" method="post" enctype="text/plain">
+    <form id="inquiry" novalidate>
+      <div class="hp" aria-hidden="true">
+        <label for="website">Website</label>
+        <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+      </div>
+      <input type="hidden" id="t" name="t">
       <div class="row">
         <div class="field">
           <label for="name">Name</label>
@@ -131,9 +141,13 @@
         <label for="message">Tell us about your challenge</label>
         <textarea id="message" name="message" placeholder="What's the AI or data problem you're trying to solve?"></textarea>
       </div>
-      <button type="submit">Send message</button>
-      <div class="note">Opens your email client addressed to partners@pacificanalysts.com.</div>
+      <button type="submit" id="send">Send message</button>
+      <div class="note" id="form-note">We'll email you a link to confirm your request.</div>
     </form>
+    <div class="sent" id="sent" hidden>
+      <h2>Thanks, almost done.</h2>
+      <p class="body">We've sent a confirmation link to <strong id="sent-email"></strong>. Click it so your note reaches us. If it doesn't arrive in a few minutes, check your spam folder or email <a href="mailto:partners@pacificanalysts.com">partners@pacificanalysts.com</a>.</p>
+    </div>
   </div>
 </div></section>
 
@@ -145,5 +159,39 @@
   </div>
 </div></footer>
 
+<script>
+// Web app URL from the "Website Inquiries" Google Sheet's Apps Script deployment.
+const ENDPOINT = 'https://script.google.com/macros/s/AKfycbwwsA7FvgWgk68PpjGuecMNYO3MMszVYAVzf6d45GM0i0NGKjYg060_0N3EHSpSYOhQ/exec';
+const form = document.getElementById('inquiry');
+const note = document.getElementById('form-note');
+const send = document.getElementById('send');
+document.getElementById('t').value = Date.now();
+
+function fail(msg){
+  note.textContent = msg; note.classList.add('err');
+  send.disabled = false; send.textContent = 'Send message';
+}
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  note.classList.remove('err');
+  const name = form.elements['name'].value.trim(), email = form.elements['email'].value.trim();
+  if (!name) return fail('Please add your name.');
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return fail('Please enter a valid email address.');
+  send.disabled = true; send.textContent = 'Sending…';
+  try {
+    const res = await fetch(ENDPOINT, { method: 'POST', body: new URLSearchParams(new FormData(form)) });
+    const out = await res.json();
+    if (!out.ok) return fail(out.error === 'invalid'
+      ? 'Please check your name and email and try again.'
+      : 'Something went wrong. Please email partners@pacificanalysts.com instead.');
+    document.getElementById('sent-email').textContent = email;
+    form.hidden = true;
+    document.getElementById('sent').hidden = false;
+  } catch (err) {
+    fail('Your message could not be sent. Please email partners@pacificanalysts.com instead.');
+  }
+});
+</script>
 </body>
 </html>
