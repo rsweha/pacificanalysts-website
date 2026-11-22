@@ -5,10 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About — Pacific Analysts</title>
 <meta name="description" content="Pacific Analysts is an AI-native advisory practice built by operators who have shipped production AI systems tied to revenue — not slide-deck consultants.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="theme-color" content="#0b2a3c">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Schibsted+Grotesk:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
 <style>
   :root{
-    --ink:#0f1b2d; --ink-soft:#33445c; --muted:#6b7a90; --line:#e2e8f0;
-    --bg:#ffffff; --bg-alt:#f5f8fa; --accent:#0d7d7d; --accent-deep:#0a5c5c; --sea:#0f3a52;
+    --ink:#0b2a3c; --ink-soft:#3b5262; --muted:#6c8191; --line:#d5e0e5;
+    --bg:#ffffff; --bg-alt:#eef2f3; --accent:#2d6f8e; --accent-deep:#1f5470; --sea:#0b2a3c;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
@@ -19,34 +26,34 @@
   header.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);
        backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
   .nav-in{display:flex;align-items:center;justify-content:space-between;height:68px}
-  .logo{font-weight:800;font-size:19px;letter-spacing:.3px;color:var(--sea)}
+  .logo{font-weight:700;font-size:19px;letter-spacing:.3px;color:var(--sea)}
   .logo span{color:var(--accent)}
   nav.links a{margin-left:26px;color:var(--ink-soft);font-size:15px;font-weight:500}
   nav.links a:hover,nav.links a.active{color:var(--accent-deep)}
-  nav.links a.cta{background:var(--accent-deep);color:#fff;padding:9px 18px;border-radius:8px}
+  nav.links a.cta{background:var(--accent-deep);color:#fff;padding:9px 18px;border-radius:5px}
   nav.links a.cta:hover{background:var(--sea)}
-  .page-head{background:linear-gradient(160deg,#0f3a52,#0a2536);color:#eaf2f5;padding:72px 0 64px}
-  .page-head .eyebrow{color:#5ad1d1}
-  .page-head h1{font-size:42px;font-weight:800;letter-spacing:-.4px;max-width:780px}
-  .page-head p{margin-top:18px;font-size:19px;color:#b9cdd6;max-width:740px}
+  .page-head{background:#0b2a3c;color:#eef2f3;padding:72px 0 64px}
+  .page-head .eyebrow{color:#e3a93b}
+  .page-head h1{font-size:42px;font-weight:700;letter-spacing:-.4px;max-width:780px}
+  .page-head p{margin-top:18px;font-size:19px;color:#bcd0da;max-width:740px}
   section{padding:74px 0}
   .eyebrow{text-transform:uppercase;letter-spacing:2px;font-size:13px;font-weight:700;
        color:var(--accent);margin-bottom:14px}
-  h2{font-size:31px;font-weight:800;letter-spacing:-.3px;color:var(--sea);max-width:760px}
+  h2{font-size:31px;font-weight:700;letter-spacing:-.3px;color:var(--sea);max-width:760px}
   .lead{font-size:19px;color:var(--ink-soft);max-width:780px;margin-top:16px}
   p.body{font-size:17px;color:var(--ink-soft);max-width:780px;margin-top:18px}
   .alt{background:var(--bg-alt)}
   /* founder */
   .founder{display:grid;grid-template-columns:230px 1fr;gap:40px;align-items:start;margin-top:10px}
-  .photo{width:230px;height:280px;border-radius:16px;background:linear-gradient(160deg,#0f3a52,#0a2536);
-       display:flex;align-items:center;justify-content:center;color:#5ad1d1;font-size:64px;font-weight:800;
+  .photo{width:230px;height:280px;border-radius:10px;background:#0b2a3c;
+       display:flex;align-items:center;justify-content:center;color:#e3a93b;font-size:64px;font-weight:700;
        border:1px solid var(--line)}
   .founder h3{font-size:24px;color:var(--sea)}
   .founder .role{color:var(--muted);font-size:15px;margin-bottom:12px}
   /* values */
   .vals{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px}
-  .val{background:#fff;border:1px solid var(--line);border-radius:14px;padding:28px 24px}
-  .val .num{font-size:14px;font-weight:800;color:var(--accent)}
+  .val{background:#fff;border:1px solid var(--line);border-radius:8px;padding:28px 24px}
+  .val .num{font-size:14px;font-weight:700;color:var(--accent)}
   .val h3{font-size:18px;color:var(--sea);margin:8px 0 8px}
   .val p{font-size:15px;color:var(--ink-soft)}
   /* track record */
@@ -61,26 +68,46 @@
   .creds{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
   .cred{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 20px;font-size:15px;color:var(--sea)}
   .cred b{color:var(--accent-deep)}
-  .band{background:var(--sea);color:#eaf2f5;border-radius:18px;padding:50px 46px;
+  .band{background:var(--sea);color:#eef2f3;border-radius:10px;padding:50px 46px;
        display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap}
-  .band h2{color:#fff}.band p{color:#b9cdd6;margin-top:8px;max-width:540px}
-  .btn{display:inline-block;padding:14px 26px;border-radius:9px;font-weight:600;font-size:16px}
-  .btn.primary{background:#11b3b3;color:#06262a}.btn.primary:hover{background:#5ad1d1}
-  footer{background:#081a28;color:#8fa6b3;padding:46px 0;font-size:14.5px}
+  .band h2{color:#fff}.band p{color:#bcd0da;margin-top:8px;max-width:540px}
+  .btn{display:inline-block;padding:14px 26px;border-radius:5px;font-weight:600;font-size:16px}
+  .btn.primary{background:#e3a93b;color:#0b2a3c}.btn.primary:hover{background:#efbd5c}
+  footer{background:#071d2a;color:#8aa1b0;padding:46px 0;font-size:14.5px}
   .foot-in{display:flex;justify-content:space-between;flex-wrap:wrap;gap:18px}
-  footer a{color:#bcd3dd}footer .logo{color:#fff;font-size:17px;margin-bottom:6px}
+  footer a{color:#9dbccb}footer .logo{color:#fff;font-size:17px;margin-bottom:6px}
   @media(max-width:820px){
     .vals{grid-template-columns:1fr}.founder{grid-template-columns:1fr}
     .photo{width:100%;height:220px}
     .page-head h1{font-size:32px}h2{font-size:26px}
     nav.links a:not(.cta){display:none}
   }
+
+  /* Brand v1 (Nov 2026): Swell Line logo, Pacific palette with paired gold. See marketing/brand/. */
+  :root{--gold:#e3a93b;--gold-deep:#c08a2b;--gold-ink:#93650f;--tide:#9dbccb;
+    --sans:'Schibsted Grotesk',-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    --serif:'Source Serif 4',Georgia,'Times New Roman',serif;
+    --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+    --logo-dot:var(--gold-deep);--logo-base:var(--tide)}
+  body{font-family:var(--sans)}
+  p,li{font-family:var(--serif)}
+  h1,h2,h3{letter-spacing:-.02em;text-wrap:balance}
+  .logo{display:flex;align-items:center;gap:10px;font-family:var(--sans);font-weight:700;font-size:20px;
+       letter-spacing:-.02em;color:var(--sea);white-space:nowrap}
+  .logo svg{width:30px;height:30px;flex:none}
+  footer .logo{color:#eef2f3;--logo-dot:var(--gold);--logo-base:#2d6f8e}
+  .eyebrow,.card .num,.val .num{font-family:var(--mono);font-weight:500;letter-spacing:.08em}
+  .stat .big,.step .letter{font-family:var(--mono);font-weight:500;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .card .num,.val .num{color:var(--gold-ink)}
+  .quote{border-left-color:var(--gold-deep);font-family:var(--serif);font-weight:400}
+  nav.links a.cta{background:var(--sea)}
+  nav.links a.cta:hover{background:#2d6f8e}
 </style>
 </head>
 <body>
 
 <header class="nav"><div class="wrap nav-in">
-  <div class="logo">Pacific<span>Analysts</span></div>
+  <a class="logo" href="index.html" aria-label="Pacific Analysts home"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M6 40 C11.5 40 13.5 28.5 20 28.5 C26 28.5 27.5 40 33 40 L41.5 29.5 L47.5 34 L52.4 25.2" fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="57" cy="16" r="5" fill="var(--logo-dot)"/><path d="M7 50 H57" stroke="var(--logo-base)" stroke-width="3" stroke-linecap="round"/></svg>Pacific Analysts</a>
   <nav class="links">
     <a href="index.html">Home</a>
     <a href="services.html">Services</a>
@@ -160,7 +187,7 @@
 </div></section>
 
 <footer><div class="wrap foot-in">
-  <div><div class="logo">Pacific Analysts</div><div>AI-native advisory for established businesses.</div></div>
+  <div><div class="logo"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M6 40 C11.5 40 13.5 28.5 20 28.5 C26 28.5 27.5 40 33 40 L41.5 29.5 L47.5 34 L52.4 25.2" fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="57" cy="16" r="5" fill="var(--logo-dot)"/><path d="M7 50 H57" stroke="var(--logo-base)" stroke-width="3" stroke-linecap="round"/></svg>Pacific Analysts</div><div>AI-native advisory for established businesses.</div></div>
   <div>
     <div><a href="index.html">Home</a> &nbsp;·&nbsp; <a href="services.html">Services</a> &nbsp;·&nbsp; <a href="contact.html">Contact</a></div>
     <div style="margin-top:8px"><a href="mailto:partners@pacificanalysts.com">partners@pacificanalysts.com</a></div>
