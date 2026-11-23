@@ -168,11 +168,16 @@
       <div class="field">
         <label for="interest">What are you exploring?</label>
         <select id="interest" name="interest">
-          <option>AI Proof-of-Value Pilot (4 weeks)</option>
-          <option>AI Readiness &amp; Opportunity Assessment</option>
-          <option>AI-Native Roadmap</option>
-          <option>Build / Implementation Oversight</option>
-          <option>Scale Advisory</option>
+          <option value="">Choose one</option>
+          <optgroup label="Start with a pilot">
+            <option data-id="bid-desk" value="Pilot: Bid Desk">Bid Desk</option>
+            <option data-id="chief-of-staff" value="Pilot: Executive Chief of Staff">Executive Chief of Staff</option>
+            <option data-id="intake-desk" value="Pilot: Intake Desk">Intake Desk</option>
+            <option data-id="cash-desk" value="Pilot: Cash Desk">Cash Desk</option>
+            <option data-id="operations-answers" value="Pilot: Operations Answers">Operations Answers</option>
+            <option data-id="your-own" value="Pilot: Bring your own">Bring your own workflow</option>
+          </optgroup>
+          <option>Re-imagining our business with AI</option>
           <option>Not sure yet — want to talk</option>
         </select>
       </div>
@@ -205,6 +210,9 @@ const form = document.getElementById('inquiry');
 const note = document.getElementById('form-note');
 const send = document.getElementById('send');
 document.getElementById('t').value = Date.now();
+const want = new URLSearchParams(location.search).get('pilot');
+const pick = want && [...document.querySelectorAll('#interest option')].find(o => o.dataset.id === want);
+if (pick) pick.selected = true;
 
 function fail(msg){
   note.textContent = msg; note.classList.add('err');
